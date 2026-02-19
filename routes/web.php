@@ -21,3 +21,4 @@ Route::get('/admin', function () {
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 
 Route::resource('hospitals', App\Http\Controllers\HospitalController::class);
+Route::resource('users', App\Http\Controllers\UserController::class);

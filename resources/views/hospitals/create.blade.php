@@ -1,19 +1,19 @@
 @extends('layouts.template')
 
-@section('title', 'Create_Hospital')
+@section('title', 'เพิ่มหน่วยบริการ')
 
 @section('content')
     <div class="container-fluid p-3">
 
         <div class="row justify-content-center">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
 
                 <div class="card card-success">
                     <div class="card-header d-flex">
                         <h3 class="card-title"><i class="fas fa-hospital-alt"></i> เพิ่มหน่วยบริการ</h3>
                     </div>
-                                        <form action="{{ route('hospitals.store') }}" method="POST">
+                    <form action="{{ route('hospitals.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -43,8 +43,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> บันทึก</button>
-                            <a href="{{ route('hospitals.index') }}" class="btn btn-outline-warning"><i class="fas fa-undo-alt"></i> กลับ</a>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> บันทึก</button>
+                            <a href="{{ route('hospitals.index') }}" class="btn btn-warning"><i class="fas fa-undo-alt"></i> กลับ</a>
                         </div>
                     </form>
                 </div>

@@ -7,11 +7,11 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
 
-                <div class="card card-success">
+                <div class="card card-info">
                     <div class="card-header d-flex">
-                        <h3 class="card-title"><i class="fas fa-hospital-alt"></i> แสดงหน่วยบริการ</h3>
+                        <h3 class="card-title"><i class="fas fa-hospital-alt"></i> รายละเอียดหน่วยบริการ</h3>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('hospitals.index') }}" class="btn btn-outline-warning"><i
+                        <a href="{{ route('hospitals.index') }}" class="btn btn-warning"><i
                                 class="fas fa-undo-alt"></i> กลับ</a>
                     </div>
                 </div>

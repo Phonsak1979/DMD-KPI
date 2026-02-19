@@ -53,6 +53,13 @@
                         </table>
                     </div>
                 </div>
+                <div class="float-left ml-2">
+                    รายการที่ {{ $hospitals->firstItem() }} - {{ $hospitals->lastItem() }} จาก
+                    {{ $hospitals->total() }} รายการ
+                </div>
+                <div class="float-right">
+                    {{ $hospitals->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>

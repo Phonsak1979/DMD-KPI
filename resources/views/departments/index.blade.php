@@ -47,11 +47,11 @@
                         </table>
                     </div>
                 </div>
-                <div class="float-left">
+                <div class="float-left ml-2">
                     รายการที่ {{ $departments->firstItem() }} - {{ $departments->lastItem() }} จาก
                     {{ $departments->total() }} รายการ
                 </div>
-                <div class="float-right">
+                <div class="float-right mr-2">
                     {{ $departments->links('pagination::bootstrap-4') }}
                 </div>
             </div>

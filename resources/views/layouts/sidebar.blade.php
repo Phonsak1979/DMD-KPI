@@ -30,8 +30,7 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('home') }}"
-                        class="nav-link {{ request()->is('home') ? 'active' : '' }}">
+                    <a href="{{ route('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             หน้าหลัก
@@ -51,7 +50,7 @@
                 <!-- Navbar Header -->
                 <li class="nav-header text-teal">ตั้งค่าระบบ</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is(['users*']) ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->is(['users*']) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             เจ้าหน้าที่
