@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $hospitals = \App\Models\Hospital::all();
+        return view('dashboard', compact('hospitals'));
     }
 }
