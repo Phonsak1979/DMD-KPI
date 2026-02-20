@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function index()
     {
+        session(['user_url' => request()->fullUrl()]);
         $users = \App\Models\User::paginate(5);
         return view('users.index', compact('users'));
     }
@@ -31,10 +32,19 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users,email' . $request->id,
+            'password' => 'required|min:8',
             'role' => 'required',
             'status' => 'required',
+        ], [
+            'name.required' => 'กรุณากรอกชื่อ-นามสกุล',
+            'email.required' => 'กรุณากรอก E-MAIL',
+            'email.email' => 'กรุณากรอก E-MAIL ที่ถูกต้อง',
+            'email.unique' => 'E-MAIL นี้มีในระบบแล้ว',
+            'password.required' => 'กรุณากรอก PASSWORD',
+            'password.min' => ' PASSWORD ต้องมีอย่างน้อย 8 ตัวอักษร',
+            'role.required' => 'กรุณาเลือก ROLE',
+            'status.required' => 'กรุณาเลือก STATUS',
         ]);
 
         $user = new \App\Models\User();
@@ -45,7 +55,7 @@ class UserController extends Controller
         $user->status = $request->status;
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->to(session('user_url', route('users.index')))->with('success', 'เพิ่มข้อมูลผู้ใช้งานเรียบร้อยแล้ว');
     }
 
     /**
@@ -88,7 +98,7 @@ class UserController extends Controller
         $user->status = $request->status;
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        return redirect()->to(session('user_url', route('users.index')))->with('success', 'แก้ไขข้อมูลผู้ใช้งานเรียบร้อยแล้ว');
     }
 
     /**
@@ -98,6 +108,6 @@ class UserController extends Controller
     {
         $user = \App\Models\User::findOrFail($id);
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->back()->with('success', 'ลบข้อมูลผู้ใช้งานเรียบร้อยแล้ว');
     }
 }

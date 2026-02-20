@@ -16,6 +16,7 @@ class HospitalController extends Controller
     }
     public function index()
     {
+        session(['hospital_url' => request()->fullUrl()]);
         $hospitals = Hospital::paginate(5);
         return view('hospitals.index', compact('hospitals'));
     }
@@ -39,12 +40,19 @@ class HospitalController extends Controller
             'district_code' => 'required',
             'province_code' => 'required',
             'zone_code' => 'required',
+        ], [
+            'hospcode.unique' => 'รหัสหน่วยบริการนี้มีในระบบแล้ว',
+            'hospcode.required' => 'กรุณากรอกรหัสหน่วยบริการ',
+            'hospname.required' => 'กรุณากรอกชื่อหน่วยบริการ',
+            'district_code.required' => 'กรุณากรอกรหัสอำเภอ',
+            'province_code.required' => 'กรุณากรอกรหัสจังหวัด',
+            'zone_code.required' => 'กรุณากรอกรหัสเขตสุขภาพ',
         ]);
 
         Hospital::create($request->all());
 
-        return redirect()->route('hospitals.index')
-            ->with('success', 'Hospital created successfully.');
+        return redirect()->to(session('hospital_url', route('hospitals.index')))
+            ->with('success', 'บันทึกข้อมูลหน่วยบริการเรียบร้อยแล้ว');
     }
 
     /**
@@ -74,12 +82,19 @@ class HospitalController extends Controller
             'district_code' => 'required',
             'province_code' => 'required',
             'zone_code' => 'required',
+        ], [
+            'hospcode.unique' => 'รหัสหน่วยบริการนี้มีในระบบแล้ว',
+            'hospcode.required' => 'กรุณากรอกรหัสหน่วยบริการ',
+            'hospname.required' => 'กรุณากรอกชื่อหน่วยบริการ',
+            'district_code.required' => 'กรุณากรอกรหัสอำเภอ',
+            'province_code.required' => 'กรุณากรอกรหัสจังหวัด',
+            'zone_code.required' => 'กรุณากรอกรหัสเขตสุขภาพ',
         ]);
 
         $hospital->update($request->all());
 
-        return redirect()->route('hospitals.index')
-            ->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
+        return redirect()->to(session('hospital_url', route('hospitals.index')))
+            ->with('success', 'แก้ไขข้อมูลหน่วยบริการเรียบร้อยแล้ว');
     }
 
     /**
@@ -88,7 +103,7 @@ class HospitalController extends Controller
     public function destroy(Hospital $hospital)
     {
         $hospital->delete();
-
-        return redirect()->route('hospitals.index');
+        return redirect()->to(session('hospital_url', route('hospitals.index')))
+            ->with('success', 'ลบข้อมูลหน่วยบริการเรียบร้อยแล้ว');
     }
 }

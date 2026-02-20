@@ -12,6 +12,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        session(['department_url' => request()->fullUrl()]);
         $departments = Department::paginate(5);
         return view('departments.index', compact('departments'));
     }
@@ -30,11 +31,16 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'department_code' => 'required|unique:departments,department_code,' . $request->id,
             'department_name' => 'required',
+        ], [
+            'department_code.required' => 'กรุณากรอกรหัสกลุ่มงาน/ฝ่าย',
+            'department_code.unique' => 'รหัสกลุ่มงาน/ฝ่ายนี้มีในระบบแล้ว',
+            'department_name.required' => 'กรุณากรอกชื่อกลุ่มงาน/ฝ่าย',
         ]);
         Department::create($request->all());
-        return redirect()->route('departments.index')
-            ->with('success', 'เพิ่มข้อมูลเรียบร้อยแล้ว');
+        return redirect()->to(session('department_url', route('departments.index')))
+            ->with('success', 'เพิ่มข้อมูลกลุ่มงาน/ฝ่ายเรียบร้อยแล้ว');
     }
 
     /**
@@ -59,11 +65,17 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         $request->validate([
+            'department_code' => 'required|unique:departments,department_code,' . $department->id,
             'department_name' => 'required',
+
+        ], [
+            'department_code.required' => 'กรุณากรอกรหัสกลุ่มงาน/ฝ่าย',
+            'department_code.unique' => 'รหัสกลุ่มงาน/ฝ่ายนี้มีในระบบแล้ว',
+            'department_name.required' => 'กรุณากรอกชื่อกลุ่มงาน/ฝ่าย',
         ]);
         $department->update($request->all());
-        return redirect()->route('departments.index')
-            ->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
+        return redirect(session('department_url', route('departments.index')))
+            ->with('success', 'แก้ไขข้อมูลกลุ่มงาน/ฝ่ายเรียบร้อยแล้ว');
     }
 
     /**
@@ -72,7 +84,7 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $department->delete();
-        return redirect()->route('departments.index')
-            ->with('success', 'ลบข้อมูลเรียบร้อยแล้ว');
+        return redirect(session('department_url', route('departments.index')))
+            ->with('success', 'ลบข้อมูลกลุ่มงาน/ฝ่ายเรียบร้อยแล้ว');
     }
 }

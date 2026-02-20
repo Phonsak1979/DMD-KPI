@@ -7,7 +7,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <div class="card card-info">
                     <div class="card-header d-flex">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('hospitals.index') }}" class="btn btn-warning"><i
+                        <a href="{{ session('hospital_url', route('hospitals.index')) }}" class="btn btn-warning"><i
                                 class="fas fa-undo-alt"></i> กลับ</a>
                     </div>
                 </div>

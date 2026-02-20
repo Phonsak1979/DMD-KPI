@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid p-3">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card card-warning">
                     <div class="card-header">
                         <h3 class="card-title"><i class="fas fa-user-edit"></i> แก้ไขข้อมูลผู้ใช้งาน</h3>
@@ -26,8 +26,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">PASSWORD (ปล่อยว่างหากไม่ต้องการเปลี่ยน)</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="รหัสผ่าน (อย่างน้อย 8 ตัวอักษร)">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="รหัสผ่าน (อย่างน้อย 8 ตัวอักษร)">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="role">ROLE</label>
@@ -47,11 +54,28 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> บันทึก</button>
-                            <a href="{{ route('users.index') }}" class="btn btn-warning"><i class="fas fa-undo"></i> ย้อนกลับ</a>
+                            <a href="{{ session('user_url', route('users.index')) }}" class="btn btn-warning"><i class="fas fa-undo"></i>
+                                ย้อนกลับ</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function(e) {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    </script>
 @endsection

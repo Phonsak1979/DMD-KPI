@@ -9,7 +9,7 @@
 
             <div class="col-md-10">
 
-                <div class="card card-success">
+                <div class="card card-info">
                     <div class="card-header d-flex">
                         <h3 class="card-title"><i class="fas fa-hospital-alt"></i> แสดงกลุ่มงาน/ฝ่าย</h3>
                     </div>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('departments.index') }}" class="btn btn-outline-warning"><i
+                        <a href="{{ session('department_url', route('departments.index')) }}" class="btn btn-warning"><i
                                 class="fas fa-undo-alt"></i> กลับ</a>
                     </div>
                 </div>

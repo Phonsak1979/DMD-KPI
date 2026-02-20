@@ -7,7 +7,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <div class="card card-success">
                     <div class="card-header d-flex">
@@ -19,27 +19,42 @@
                             <div class="form-group">
                                 <label for="hospcode">รหัสหน่วยบริการ</label>
                                 <input type="text" name="hospcode" class="form-control" id="hospcode"
-                                    placeholder="รหัสหน่วยบริการ 5 หลัก" required>
+                                    placeholder="รหัสหน่วยบริการ 5 หลัก">
+                                @error('hospcode')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="hospname">ชื่อหน่วยบริการ</label>
                                 <input type="text" name="hospname" class="form-control" id="hospname"
-                                    placeholder="ชื่อหน่วยบริการ เช่น รพ.สต.ดอนมดแดง" required>
+                                    placeholder="ชื่อหน่วยบริการ เช่น รพ.สต.ดอนมดแดง">
+                                @error('hospname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="district_code">รหัสอำเภอ</label>
                                 <input type="text" name="district_code" class="form-control" id="district_code"
-                                    placeholder="รหัสอำเภอ 4 หลัก" required>
+                                    placeholder="รหัสอำเภอ 4 หลัก">
+                                @error('district_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="province_code">รหัสจังหวัด</label>
                                 <input type="text" name="province_code" class="form-control" id="province_code"
-                                    placeholder="รหัสจังหวัด 2 หลัก" required>
+                                    placeholder="รหัสจังหวัด 2 หลัก">
+                                @error('province_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="zone_code">รหัสเขตสุขภาพ</label>
                                 <input type="text" name="zone_code" class="form-control" id="zone_code"
-                                    placeholder="รหัสเขตสุขภาพ 2 หลัก" required>
+                                    placeholder="รหัสเขตสุขภาพ 2 หลัก">
+                                @error('zone_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="card-footer">

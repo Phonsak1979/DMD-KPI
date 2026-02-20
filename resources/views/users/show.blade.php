@@ -1,60 +1,41 @@
 @extends('layouts.template')
 
-@section('title', 'รายละเอียดผู้ใช้งานระบบ')
+@section('title', 'รายละเอียดผู้ใช้งาน')
 
 @section('content')
     <div class="container-fluid p-3">
+
         <div class="row justify-content-center">
-            <div class="col-md-8">
+
+            <div class="col-md-10">
+
                 <div class="card card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">รายละเอียดผู้ใช้งาน</h3>
+                    <div class="card-header d-flex">
+                        <h3 class="card-title"><i class="fas fa-user-check"></i> รายละเอียดผู้ใช้งาน</h3>
                     </div>
                     <div class="card-body">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">ชื่อ-นามสกุล:</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static">{{ $user->name }}</p>
-                            </div>
+
+                        <div class="form-group">
+                            <label for="name">ชื่อ-นามสกุล</label>
+                            <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">อีเมล:</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static">{{ $user->email }}</p>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">E-MAIL</label>
+                            <input type="text" class="form-control" id="email" value="{{ $user->email }}" readonly>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">สิทธิ์การใช้งาน:</label>
-                            <div class="col-sm-9">
-                                <span class="badge badge-warning">{{ $user->role }}</span>
-                            </div>
+
+                        <div class="form-group">
+                            <label for="role">ROLE</label>
+                            <input type="text" class="form-control" id="role" value="{{ $user->role }}" readonly>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">สถานะ:</label>
-                            <div class="col-sm-9">
-                                @if ($user->status == 'active')
-                                    <span class="badge badge-success">{{ $user->status }}</span>
-                                @else
-                                    <span class="badge badge-danger">{{ $user->status }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">วันที่สร้าง:</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static">{{ $user->created_at->format('d/m/Y H:i:s') }}</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">แก้ไขล่าสุด:</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static">{{ $user->updated_at->format('d/m/Y H:i:s') }}</p>
-                            </div>
+                        <div class="form-group">
+                            <label for="status">STATUS</label>
+                            <input type="text" class="form-control" id="status" value="{{ $user->status }}" readonly>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">แก้ไข</a>
-                        <a href="{{ route('users.index') }}" class="btn btn-secondary">ย้อนกลับ</a>
+                        <a href="{{ session('user_url', route('users.index')) }}" class="btn btn-warning"><i
+                                class="fas fa-undo-alt"></i> กลับ</a>
                     </div>
                 </div>
             </div>
