@@ -13,4 +13,9 @@ class Department extends Model
         'department_code',
         'department_name',
     ];
+
+    public function rankings()
+    {
+        return $this->hasMany(Ranking::class, 'department_code', 'department_code');
+    }
 }

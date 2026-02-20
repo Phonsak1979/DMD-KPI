@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('rankings', function (Blueprint $table) {
             $table->id();
-            $table->string('r_main');
-            $table->string('r_sub')->nullable();
+            $table->string('r_main')->unique();
+            $table->string('r_sub')->nullable()->unique();
             $table->string('title');
-            $table->string('five_d_code');
+            $table->string('url')->nullable();
             $table->string('department_code');
-            $table->string('target');
-            $table->string('result');
-            $table->string('target_value');
+            $table->string('target')->nullable();
+            $table->string('result')->nullable();
+            $table->string('target_value')->nullable();
             $table->timestamps();
         });
     }

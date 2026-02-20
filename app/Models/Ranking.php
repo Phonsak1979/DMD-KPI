@@ -13,8 +13,15 @@ class Ranking extends Model
         'r_main',
         'r_sub',
         'title',
+        'url',
+        'department_code',
         'target',
         'result',
         'target_value',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_code', 'department_code');
+    }
 }

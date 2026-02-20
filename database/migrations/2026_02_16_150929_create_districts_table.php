@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
-            $table->string('district_code');
+            $table->string('district_code')->unique();
             $table->string('district_name');
             $table->timestamps();
         });

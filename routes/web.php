@@ -23,3 +23,5 @@ Route::resource('departments', App\Http\Controllers\DepartmentController::class)
 Route::resource('hospitals', App\Http\Controllers\HospitalController::class);
 
 Route::resource('users', App\Http\Controllers\UserController::class);
+
+Route::resource('rankings', App\Http\Controllers\RankingController::class);

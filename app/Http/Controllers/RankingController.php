@@ -12,7 +12,8 @@ class RankingController extends Controller
      */
     public function index()
     {
-        //
+        $rankings = Ranking::paginate(5);
+        return view('rankings.index', compact('rankings'));
     }
 
     /**
@@ -20,7 +21,8 @@ class RankingController extends Controller
      */
     public function create()
     {
-        //
+        $departments = \App\Models\Department::all();
+        return view('rankings.create', compact('departments'));
     }
 
     /**

@@ -75,6 +75,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('rankings.index') }}"
+                        class="nav-link {{ request()->is(['rankings*']) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                            ตัวชี้วัด (KPI)
+                        </p>
+                    </a>
+                </li>
 
 
 
