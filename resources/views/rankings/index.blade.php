@@ -22,9 +22,8 @@
                                 <tr>
                                     <th class="text-center">ลำดับ</th>
                                     <th class="text-center">R</th>
-                                    <th class="text-center">R ย่อย</th>
+                                    <th class="text-center">R-Sub</th>
                                     <th>ชื่อตัวชี้วัด</th>
-                                    <th>URL</th>
                                     <th>กลุ่มงาน/ฝ่าย</th>
                                     <th class="text-center">การจัดการ</th>
                                 </tr>
@@ -33,11 +32,12 @@
                                 @foreach ($rankings as $ranking)
                                     <tr>
                                         <td class="text-center">{{ $rankings->firstItem() + $loop->index }}</td>
-                                        <td class="text-center"><span class="badge badge-info">{{ $ranking->r }}</span></td>
-                                        <td class="text-center"><span class="badge badge-info">{{ $ranking->r_sub }}</span></td>
-                                        <td>{{ $ranking->kpi_name }}</td>
-                                        <td>{{ $ranking->url }}</td>
-                                        <td>{{ $ranking->department_code }}</td>
+                                        <td class="text-center"><span class="badge badge-info">R{{ $ranking->r_main }}</span>
+                                        </td>
+                                        <td class="text-center"><span class="badge badge-warning">{{ $ranking->r_sub }}</span>
+                                        </td>
+                                        <td>{{ $ranking->title }}</td>
+                                        <td class="text-sm"><span class="badge badge-light">{{ $ranking->department->department_name ?? $ranking->department_code }}</span></td>
                                         <td class="text-center">
                                             <a href="{{ route('rankings.show', $ranking->id) }}"
                                                 class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>

@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label for="r_main">รหัส R หลัก</label>
                                 <input type="text" name="r_main" class="form-control" id="r_main"
-                                    placeholder="รหัส R หลัก เช่น R1- R62">
+                                    placeholder="รหัส R หลัก เช่น ตัวเลข 1-62">
                                 @error('r_main')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="r_sub">รหัส R ย่อย</label>
                                 <input type="text" name="r_sub" class="form-control" id="r_sub"
-                                    placeholder="รหัส R ย่อย เช่น R1.1- R1.5">
+                                    placeholder="รหัส R ย่อย ตัวเลขทศนิยม เช่น 1.1-1.5">
                                 @error('r_sub')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
