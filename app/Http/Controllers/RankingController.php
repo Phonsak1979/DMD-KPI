@@ -13,7 +13,7 @@ class RankingController extends Controller
     public function index()
     {
         session()->put('ranking_url', request()->fullUrl());
-        $rankings = Ranking::with('department')->paginate(5);
+        $rankings = Ranking::with('department')->paginate(10);
         return view('rankings.index', compact('rankings'));
     }
 

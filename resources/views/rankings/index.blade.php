@@ -21,9 +21,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ลำดับ</th>
-                                    <th class="text-center">R</th>
-                                    <th class="text-center">R-Sub</th>
-                                    <th>ชื่อตัวชี้วัด</th>
+                                    <th class="text-center">Ranking</th>
+                                    <th class="text-center">ชื่อตัวชี้วัด</th>
                                     <th>กลุ่มงาน/ฝ่าย</th>
                                     <th class="text-center">การจัดการ</th>
                                 </tr>
@@ -33,8 +32,6 @@
                                     <tr>
                                         <td class="text-center">{{ $rankings->firstItem() + $loop->index }}</td>
                                         <td class="text-center"><span class="badge badge-info">R{{ $ranking->r_main }}</span>
-                                        </td>
-                                        <td class="text-center"><span class="badge badge-warning">{{ $ranking->r_sub }}</span>
                                         </td>
                                         <td>{{ $ranking->title }}</td>
                                         <td class="text-sm"><span class="badge badge-light">{{ $ranking->department->department_name ?? $ranking->department_code }}</span></td>

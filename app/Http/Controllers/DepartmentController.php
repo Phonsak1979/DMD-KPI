@@ -13,7 +13,7 @@ class DepartmentController extends Controller
     public function index()
     {
         session(['department_url' => request()->fullUrl()]);
-        $departments = Department::paginate(5);
+        $departments = Department::paginate(10);
         return view('departments.index', compact('departments'));
     }
 

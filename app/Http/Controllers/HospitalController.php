@@ -17,7 +17,7 @@ class HospitalController extends Controller
     public function index()
     {
         session(['hospital_url' => request()->fullUrl()]);
-        $hospitals = Hospital::paginate(5);
+        $hospitals = Hospital::paginate(10);
         return view('hospitals.index', compact('hospitals'));
     }
 

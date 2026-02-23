@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         session(['user_url' => request()->fullUrl()]);
-        $users = \App\Models\User::paginate(5);
+        $users = \App\Models\User::paginate(10);
         return view('users.index', compact('users'));
     }
 
