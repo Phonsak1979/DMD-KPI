@@ -15,7 +15,8 @@
     body {
         /* ใส่พาธรูปภาพ */
         background-image: url('dist/img/background.jpg');
-        background-color: #cccccc; /* สีพื้นหลังระหว่างรอโหลดภาพ */
+        background-color: #cccccc;
+        /* สีพื้นหลังระหว่างรอโหลดภาพ */
 
         /* ให้ภาพพื้นหลังแสดงผลกลางหน้าจอ */
         background-repeat: no-repeat;
@@ -44,20 +45,22 @@
 
             <!-- Card Body -->
             <div class="card-body login-card-body">
-                <h5 class="login-box-msg"><i class="fas fa-key mr-2"></i></i>กรุณาลงชื่อเพื่อเข้าสู่ระบบ</h5>
+                <h4 class="login-box-msg"><i class="fas fa-user-lock mr-2 text-success"></i> ลงชื่อเข้าสู่ระบบ
+                </h4>
 
                 <!-- Form -->
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <!-- Email -->
+                    <label for="email">อีเมล (Email)</label>
                     <div class="input-group mb-3">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                             placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope text-info"></span>
+                                <span class="fas fa-envelope text-success"></span>
                             </div>
                         </div>
                         @error('email')
@@ -68,13 +71,15 @@
                     </div>
 
                     <!-- Password -->
+                    <label for="password">รหัสผ่าน (Password)</label>
                     <div class="input-group mb-3">
                         <input id="password" type="password"
                             class="form-control @error('password') is-invalid @enderror" name="password" required
                             autocomplete="current-password" placeholder="Password">
                         <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock text-info"></span>
+
+                            <div class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
+                                <span class="fas fa-eye text-success" id="togglePasswordIcon"></span>
                             </div>
                         </div>
                         @error('password')
@@ -87,7 +92,7 @@
                     <!-- Button Submit -->
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-info btn-block">
+                            <button type="submit" class="btn btn-success btn-block">
                                 <i class="nav-icon fas fa-sign-in-alt"></i> เข้าสู่ระบบ</button>
                         </div>
                     </div>
@@ -111,6 +116,21 @@
     <!-- Script -->
     @include('layouts.script')
 
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePasswordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 
 </html>
