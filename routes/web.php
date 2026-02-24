@@ -16,7 +16,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/admin', function () {
     return view('admin.index');
-});
+})->name('admin.index');
+
+Route::get('/synchronize', [App\Http\Controllers\SynchronizeController::class, 'index'])->name('synchronize.index');
 
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 

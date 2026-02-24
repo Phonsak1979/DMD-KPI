@@ -46,11 +46,21 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('synchronize.index') }}"
+                        class="nav-link {{ request()->is('synchronize*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-sync-alt"></i>
+                        <p>
+                            Synchronize
+                        </p>
+                    </a>
+                </li>
 
                 <!-- Navbar Header -->
                 <li class="nav-header text-teal">ตั้งค่าระบบ</li>
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->is(['users*']) ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}"
+                        class="nav-link {{ request()->is(['users*']) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             เจ้าหน้าที่
@@ -84,8 +94,6 @@
                         </p>
                     </a>
                 </li>
-
-
 
                 <!-- Navbar Header -->
                 <li class="nav-header text-teal">ออกจากระบบ</li>

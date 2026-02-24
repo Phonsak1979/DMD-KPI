@@ -100,10 +100,10 @@
                 </form>
 
                 @if (Route::has('password.request'))
-                    <p class="mt-3 mb-1">
+                    <p class="mt-3 mb-1 text-sm">
                         <a href="{{ route('password.request') }}">ลืมรหัสผ่านหรือไม่ ?</a>
                     </p>
-                    <p class="mb-0">
+                    <p class="mb-0 text-sm">
                         ยังไม่ลงทะเบียนเข้าใช้งาน <a href="{{ route('register') }}" class="text-center">คลิกที่นี่ !</a>
                     </p>
                 @endif
